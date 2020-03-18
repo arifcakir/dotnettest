@@ -55,7 +55,7 @@ namespace SMS.Tests.Mvc
             };
 
             //Act
-            var response = await _client.PostAsync("Student/AddUpdate", new FormUrlEncodedContent(formData));
+            var response = await _client.PostAsync("/Student/AddUpdate", new FormUrlEncodedContent(formData));
             response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
 

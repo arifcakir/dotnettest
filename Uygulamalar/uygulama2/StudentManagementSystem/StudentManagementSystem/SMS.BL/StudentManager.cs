@@ -17,7 +17,6 @@ namespace SMS.BL
 {
     public class StudentManager : BaseManagement, IStudentManager
     {
-
         private readonly IAsyncRepository<Student> _asyncStudentRepository;
         private readonly IMapper _mapper;
         private readonly IDateTimeProvider _dateTimeProvider;
@@ -51,14 +50,12 @@ namespace SMS.BL
                     try
                     {
                         await _asyncStudentRepository.Save();
-
-                }
-                catch (Exception e)
-                {
-                    var d = e;
+                    }
+                    catch (Exception e)
+                    {
+                        var d = e;
                         throw;
                     }
-
 
                 //scope.Complete();
 

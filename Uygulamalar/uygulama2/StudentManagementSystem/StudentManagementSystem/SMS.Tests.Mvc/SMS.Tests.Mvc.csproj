@@ -29,8 +29,4 @@
     <ProjectReference Include="..\SMS.Mvc\SMS.Mvc.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SmsDb\" />
-  </ItemGroup>
-
 </Project>

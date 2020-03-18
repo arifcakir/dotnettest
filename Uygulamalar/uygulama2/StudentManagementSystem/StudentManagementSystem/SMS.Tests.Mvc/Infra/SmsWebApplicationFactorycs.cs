@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -29,10 +30,16 @@ namespace SMS.Tests.Mvc.Infra
                     services.Remove(descriptor);
                 }
 
-                services.AddDbContext<DbContext, SmsDbContext>(
-                    options => options.UseSqlite("Filename=./SmsDb/SmsTest.db"), 
-                                                                ServiceLifetime.Scoped);
-                 var sp = services.BuildServiceProvider();
+                //services.AddDbContext<DbContext, SmsDbContext>(
+                //    options => options.UseSqlite("Filename=D:\\KizilayDocuments\\Egitimler\\dotnettest\\Uygulamalar\\uygulama2\\StudentManagementSystem\\StudentManagementSystem\\SqLiteDb\\sms.db"), 
+                //                                                ServiceLifetime.Scoped);
+
+
+                var path = $"{Environment.CurrentDirectory.Split("SMS.Tests.Mvc")[0]}SqLiteDb\\sms.db";
+
+                services.AddDbContext<DbContext, SmsDbContext>(options => options.UseSqlite($"Filename={path}"), ServiceLifetime.Scoped);
+
+                var sp = services.BuildServiceProvider();
 
                 // Create a scope to obtain a reference to the database
                 // context (ApplicationDbContext).

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,6 @@ namespace SMS.Tests.BDD.Infra
     public class SmsWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
-
         public IOptionManager OptionManager { get; private set; }
         public DbContextOptionsBuilder<SmsDbContext> DbBuilder { get; private set; }
         protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -29,10 +29,11 @@ namespace SMS.Tests.BDD.Infra
                     services.Remove(descriptor);
                 }
 
-                services.AddDbContext<DbContext, SmsDbContext>(
-                    options => options.UseSqlite("Filename=./SmsDb/SmsTest.db"), 
-                                                                ServiceLifetime.Scoped);
-                 var sp = services.BuildServiceProvider();
+                var path = $"{Environment.CurrentDirectory.Split("SMS.Tests.BDD")[0]}SqLiteDb\\sms.db";
+
+                services.AddDbContext<DbContext, SmsDbContext>(options => options.UseSqlite($"Filename={path}"), ServiceLifetime.Scoped);
+
+                var sp = services.BuildServiceProvider();
 
                 // Create a scope to obtain a reference to the database
                 // context (ApplicationDbContext).

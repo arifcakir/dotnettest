@@ -23,13 +23,13 @@ Examples:
 @OgrenciListeleme
 Scenario: Öğrenci Listele
 	Given Menüden öğreci listele linkine tıklanır
-	And   Listeleme ekranında yer alan <Firstname>, <Lastname>, <Birthdate>, <Age> ve <Gender> bilgileri girilir
+	And   Listeleme ekranında yer alan <Firstname>, <Lastname>, <Birthdate> ve <Gender> bilgileri girilir
 	When  Ara butonuna tıklanır
 	Then  Öğrenci listeleme işleminin başarılı olduğu görülür
 
 Examples: 
-| Firstname | Lastname | Birthdate  | Age | Gender |
-| Murat     | Cabuk    | 10.10.1960 | 45  | Male   |
+| Firstname | Lastname | Birthdate  | Gender |
+| M         | C        | 10.10.1959 | Male   |
 
 @OgrenciSilme
 Scenario: Öğrenci Sil

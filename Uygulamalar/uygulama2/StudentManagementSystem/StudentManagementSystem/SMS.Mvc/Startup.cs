@@ -1,3 +1,8 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Net.Mime;
+using System.Reflection;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,32 +32,58 @@ namespace SMS.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+          
             services.AddDalServices();
             services.AddBlServices();
             services.AddCoreServices();
 
-            if (_env.IsEnvironment("Testing"))
-            {
-                var connString = Configuration["ConnectionStrings:SqlLite"];
-                services.AddDbContext<DbContext, SmsDbContext>(
-                    options => options.UseSqlite(connString), ServiceLifetime.Scoped);
-            }
-            else if (_env.IsProduction())
-            {
-                var connString = Configuration["ConnectionStrings:InMemoryConnection"];
-                services.AddDbContext<DbContext, SmsDbContext>(
-                    options => options.UseNpgsql(connString), ServiceLifetime.Scoped);
-            }
-            else
-            {
-                //var connString = Configuration["ConnectionStrings:InMemoryConnection"];
-                //services.AddDbContext<DbContext, SmsDbContext>(
-                //    options => options.UseInMemoryDatabase(connString), ServiceLifetime.Transient);
+            //if (_env.IsEnvironment("Testing"))
+            //{
+            //    var connString = Configuration["ConnectionStrings:SqlLite"];
+            //    services.AddDbContext<DbContext, SmsDbContext>(
+            //        options => options.UseSqlite(connString), ServiceLifetime.Scoped);
+            //}
+            //else if (_env.IsProduction())
+            //{
+            //    var connString = Configuration["ConnectionStrings:InMemoryConnection"];
+            //    services.AddDbContext<DbContext, SmsDbContext>(
+            //        options => options.UseNpgsql(connString), ServiceLifetime.Scoped);
+            //}
+            //else
+            //{
+            //    //var connString = Configuration["ConnectionStrings:InMemoryConnection"];
+            //    //services.AddDbContext<DbContext, SmsDbContext>(
+            //    //    options => options.UseInMemoryDatabase(connString), ServiceLifetime.Transient);
 
-                var connString = Configuration["ConnectionStrings:SqlLite"];
-                services.AddDbContext<DbContext, SmsDbContext>(
-                    options => options.UseSqlite(connString), ServiceLifetime.Scoped);
+            //    var connString = Configuration["ConnectionStrings:SqlLite"];
+            //    services.AddDbContext<DbContext, SmsDbContext>(
+            //        options => options.UseSqlite(connString), ServiceLifetime.Scoped);
+            //}
+            //var connString = Configuration["ConnectionStrings:SqlLite"];
+
+
+            var path = Environment.CurrentDirectory.Split("SMS.Mvc");
+            if (path.Length == 1)
+            {
+                path = Environment.CurrentDirectory.Split("SMS.Tests.Mvc");
             }
+
+            if (path.Length == 1)
+            {
+                path = Environment.CurrentDirectory.Split("SMS.Tests.BDD");
+            }
+
+
+
+            var dbPath =  $"Filename={path[0]}SqLiteDb\\sms.db";
+
+
+            //  var path = $"{Environment.CurrentDirectory.Split("SMS.Mvc")[0]}SqLiteDb\\sms.db";
+
+            services.AddDbContext<DbContext, SmsDbContext>(options => options.UseSqlite(dbPath), ServiceLifetime.Scoped);
+
+            
 
 
             services.AddAutoMapper(typeof(MvcMappingProfile), typeof(BlMappingProfile));

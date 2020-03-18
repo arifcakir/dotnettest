@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Tests.DAL", "SMS.Tests.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Tests.Mvc", "SMS.Tests.Mvc\SMS.Tests.Mvc.csproj", "{83AFD88B-5F79-41D5-B7BE-95014D910273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Tests.BDD", "SMS.Tests.BDD\SMS.Tests.BDD.csproj", "{0617A08C-E9C3-4909-829C-0647470CAA7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Tests.BDD", "SMS.Tests.BDD\SMS.Tests.BDD.csproj", "{0617A08C-E9C3-4909-829C-0647470CAA7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

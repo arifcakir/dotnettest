@@ -154,8 +154,8 @@ this.FeatureBackground();
         [Xunit.TraitAttribute("FeatureTitle", "OgrenciYonetimModulu")]
         [Xunit.TraitAttribute("Description", "Öğrenci Listele")]
         [Xunit.TraitAttribute("Category", "OgrenciListeleme")]
-        [Xunit.InlineDataAttribute("Murat", "Cabuk", "10.10.1960", "45", "Male", new string[0])]
-        public virtual void OğrenciListele(string firstname, string lastname, string birthdate, string age, string gender, string[] exampleTags)
+        [Xunit.InlineDataAttribute("M", "C", "10.10.1959", "Male", new string[0])]
+        public virtual void OğrenciListele(string firstname, string lastname, string birthdate, string gender, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "OgrenciListeleme"};
@@ -192,7 +192,7 @@ this.FeatureBackground();
  testRunner.Given("Menüden öğreci listele linkine tıklanır", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 26
- testRunner.And(string.Format("Listeleme ekranında yer alan {0}, {1}, {2}, {3} ve {4} bilgileri girilir", firstname, lastname, birthdate, age, gender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Listeleme ekranında yer alan {0}, {1}, {2} ve {3} bilgileri girilir", firstname, lastname, birthdate, gender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 27
  testRunner.When("Ara butonuna tıklanır", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

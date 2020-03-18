@@ -60,18 +60,21 @@
             <th>Birthday</th>
 
         </tr>
-        @foreach (var student in Model.StudentList.Students)
-        {
-            <tr>
 
-                <td>@student.Id)</td>
+        @{ var i = 0;
+
+            foreach (var student in Model.StudentList.Students)
+            {
+              var id="td" + (i++).ToString();
+            <tr>
+                <td id="@id">@student.Id</td>
                 <td>@student.StudentId </td>
                 <td>@string.Format($"{student.FirstName} {student.LastName}") </td>
                 <td>@student.BirthDate</td>
                 <td><a href="delete?id=@student.Id">@Resource.Delete</a></td>
-
             </tr>
-        }
+                }
+            }
     </thead>
 
 </table>

@@ -17,7 +17,7 @@ namespace SMS.Tests.BDD.OgrenciYonetimModulu
     {
 
         public ScenarioContext scenarioContext;
-        public FeatureContext featureContext;
+        public FeatureContext FeatureContext;
         private SmsWebApplicationFactory<Startup> factory;
         private HttpClient httpClient;
         private IOptionManager optionManager;
@@ -27,7 +27,7 @@ namespace SMS.Tests.BDD.OgrenciYonetimModulu
         public OgrenciYonetimModuluOgrenciEkleme(ScenarioContext scenarioContext, FeatureContext featureContext)
         {
             scenarioContext = scenarioContext;
-            featureContext = featureContext;
+            FeatureContext = featureContext;
 
             factory = featureContext.Get<SmsWebApplicationFactory<Startup>>("SmsWebApplicationcontext");
             httpClient = factory.CreateClient();

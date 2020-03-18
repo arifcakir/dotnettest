@@ -11,7 +11,10 @@ namespace SMS.Tests.DAL.infra
         {
             var builder = new DbContextOptionsBuilder<SmsDbContext>();
 
-            builder.UseSqlite("Filename=../../../SqLiteDbs/SmsTeacherTest.db");
+            var path = $"{Environment.CurrentDirectory.Split("SMS.Tests.DAL")[0]}SqLiteDb\\smsTestTeacher.db";
+
+
+            builder.UseSqlite($"Filename={path}");
 
             SmsDbContext = new SmsDbContext(builder.Options);
             SmsDbContext.Database.OpenConnectionAsync();

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using SMS.Globalizaiton.Resources;
 using SMS.Mvc;
 using SMS.Tests.BDD.Infra;
+using SQLitePCL;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -16,7 +18,7 @@ namespace SMS.Tests.BDD.OgrenciYonetimModulu
 
 
         public ScenarioContext scenarioContext;
-        public FeatureContext featureContext;
+        public FeatureContext FeatureContext;
         private SmsWebApplicationFactory<Startup> factory;
         private HttpClient httpClient;
         private string responseString;
@@ -27,9 +29,15 @@ namespace SMS.Tests.BDD.OgrenciYonetimModulu
             //burası background lduğu için aslında hangi senaryo çalışıyorsa oranın senaryo kaydına gideceği için burada kullanmak çok mantıklı değil aslında
             // bu nedenla aşağıda bu clas için private değişkenler tanımlanarak class içi veriler bu değişkenlerle taşındı
             scenarioContext = scenarioContext;
-            featureContext = featureContext;
+            FeatureContext = featureContext;
 
-            featureContext.Add("SmsWebApplicationcontext", new SmsWebApplicationFactory<Startup>());
+            var count = featureContext.Keys.Where(t => t == "SmsWebApplicationcontext").Count();
+
+            if (count == 0)
+            {
+                featureContext.Add("SmsWebApplicationcontext", new SmsWebApplicationFactory<Startup>());
+            }
+
 
             factory = featureContext.Get<SmsWebApplicationFactory<Startup>>("SmsWebApplicationcontext");
             httpClient = factory.CreateClient();
