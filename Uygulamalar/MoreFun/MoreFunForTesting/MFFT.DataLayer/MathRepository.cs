@@ -4,6 +4,12 @@ namespace MFFT.DataLayer
 {
     public class MathRepository: IMathRepository
     {
+        public MathRepository()
+        {
+
+
+        }
+
         public int GetIntMax()
         {
             return int.MaxValue;

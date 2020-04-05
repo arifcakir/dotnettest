@@ -14,7 +14,7 @@ namespace FirstTestApp
 
 
         /// <summary>
-        /// TODO: Hangi testler yazılabilir? tartışınız.
+        /// TODO: Hangi testler yazılabilir?
         /// bu kodların her birinde beklenmeyen hatalar oluşabilir
         /// bu durumda sizce kodlarda ne tür  değişiklikler uygun olacaktır.
         /// (hint: geri dönüş değerleri nasıl değiştirilebilir?)

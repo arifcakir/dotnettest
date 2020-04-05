@@ -18,7 +18,7 @@ namespace FirstTestApp.Tests
         }
 
         [Fact]
-        public void rakam_1_le_100_arasinda_girildiginde_true_rakami_donmeli()
+        public void rakam_1_le_100_arasinda_girildiginde_true_donmeli()
         {
             var b = _myNumbersManager.AddItem(1);
             Assert.True(b);
@@ -31,7 +31,7 @@ namespace FirstTestApp.Tests
         // [InlineData(2147483647)] //2_147_483_647 int32 max int değeri
         //TODO: bu test yapılmalı mıydı sizce?
         //(yapılcaksa eğer burada mı yapılmalı?)
-        // bu değerler mi yapılmalı?
+        // bu değerlerle mi yapılmalı?
         public void rakam_1_le_100_arasinda_girilmediginde_false_donmeli(int i)
         {
             var b = _myNumbersManager.AddItem(i);

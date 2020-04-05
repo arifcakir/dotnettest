@@ -26,6 +26,8 @@ https://www.gitmemory.com/issue/AutoFixture/AutoFixture/1125/497428257
 
 
 
+https://swcareerroadmap.com/2016/11/02/customize-objects-creation-in-autofixture/
+
 https://stackoverflow.com/questions/15442636/autodata-theories-with-autofixture-using-manual-fakes
 
 https://thomasardal.com/customizations-for-autofixture-my-new-best-friend/
